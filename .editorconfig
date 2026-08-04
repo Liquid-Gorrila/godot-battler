@@ -1,0 +1,54 @@
+# Project Genesis C# style rules.
+# Stricter than the Microsoft/Roslyn defaults on purpose — see
+# 04_ROADMAP.md's Coding Standards section: the goal is that a junior
+# developer can read this code without asking the author.
+
+root = true
+
+[*.cs]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8-bom
+
+# Explicit access modifiers on every member — no implicit `private`.
+dotnet_style_require_accessibility_modifiers = always:error
+
+# Braces required on every if/for/while/etc., even single-line bodies.
+csharp_prefer_braces = true:error
+
+# No public fields — force properties instead.
+dotnet_diagnostic.SA1401.severity = error
+
+# Guard clauses / early return over deep nesting.
+csharp_style_prefer_pattern_matching = true:suggestion
+
+# var only when the type is obvious from the right-hand side.
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = false:suggestion
+
+# One statement / one member per line.
+csharp_preserve_single_line_statements = false
+csharp_preserve_single_line_blocks = true
+
+# Nullable reference types: treat unhandled nulls as errors, not warnings.
+dotnet_diagnostic.CS8600.severity = error
+dotnet_diagnostic.CS8602.severity = error
+dotnet_diagnostic.CS8603.severity = error
+dotnet_diagnostic.CS8618.severity = error
+
+# Naming: PascalCase for types/members, camelCase with leading underscore
+# for private fields, so the two are never visually ambiguous.
+dotnet_naming_rule.private_fields_underscore.severity = error
+dotnet_naming_rule.private_fields_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_underscore.style = underscore_camel_case
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_style.underscore_camel_case.required_prefix = _
+dotnet_naming_style.underscore_camel_case.capitalization = camel_case
+
+[*.{csproj,json}]
+indent_style = space
+indent_size = 2
