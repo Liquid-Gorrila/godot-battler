@@ -1,0 +1,33 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Project Genesis"
+config/features=PackedStringArray("4.3", "C#", "Mobile")
+run/main_scene="res://Scenes/Main.tscn"
+
+[autoload]
+
+EventBus="*res://Scripts/Autoload/EventBus.cs"
+GameManager="*res://Scripts/Autoload/GameManager.cs"
+SaveManager="*res://Scripts/Autoload/SaveManager.cs"
+MonsterManager="*res://Scripts/Autoload/MonsterManager.cs"
+BattleManager="*res://Scripts/Autoload/BattleManager.cs"
+BluetoothManager="*res://Scripts/Autoload/BluetoothManager.cs"
+AudioManager="*res://Scripts/Autoload/AudioManager.cs"
+
+[dotnet]
+
+project/assembly_name="GodotBattler"
+
+[rendering]
+
+renderer/rendering_method="mobile"
